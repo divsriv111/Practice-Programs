@@ -1,0 +1,17 @@
+{
+  "python.formatting.provider": "yapf",
+  "files.associations": {
+    "iostream": "cpp",
+    "atomic": "cpp",
+    "istream": "cpp",
+    "iterator": "cpp",
+    "memory": "cpp",
+    "streambuf": "cpp",
+    "system_error": "cpp",
+    "xfacet": "cpp",
+    "xiosbase": "cpp",
+    "xlocale": "cpp",
+    "xlocnum": "cpp",
+    "xutility": "cpp"
+  }
+}
