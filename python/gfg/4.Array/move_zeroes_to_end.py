@@ -1,16 +1,11 @@
-def Method(arr):
-    start = 0
-    end = len(arr) - 1
-    while start <= end:
-        if arr[start] == 0 and arr[end] != 0:
-            arr[start], arr[end] = arr[end], arr[start]
-            start += 1
-            end -= 1
-        else:
-            start += 1
-            end -= 1
+def MoveZero(arr):
+    count = 0
+    for i in range(len(arr)):
+        if arr[i] != 0:
+            arr[i], arr[count] = arr[count], arr[i]
+            count += 1
     return arr
 
 
 arr = list(map(int, input().strip().split()))
-print(Method(arr))
+print(MoveZero(arr))
