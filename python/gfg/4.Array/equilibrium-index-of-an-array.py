@@ -16,7 +16,7 @@ def equilibrium(arr):
     # Iterate from 0 to len(arr)
     for i in range(len(arr)):
         if left_sum[i] == right_sum[len(arr) - 1 - i]:
-            return i
+            return i + 1
 
     # If no equilibrium index found,then return -1
     return -1
