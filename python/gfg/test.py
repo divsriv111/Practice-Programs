@@ -1,15 +1,15 @@
-C = 100
-n = 3
-A = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+def check(x):
+    return x and (not (x & (x - 1)))
 
-for i in range(n):
-    for j in range(n):
 
-        Temp = A[i][j] + C
-        A[i][j] = A[j][i]
-        A[j][i] = Temp - C
+def countPairs(arr):
+    cnt = 0
+    prod = [x & y for x in arr for y in arr if y > x]
+    print(prod)
+    for x in prod:
+        if x and (not (x & (x - 1))):
+            cnt += 1
+    return cnt
 
-for i in range(n):
-    for j in range(n):
-        print(A[i][j], end=" ")
-    print("\n")
+
+countPairs([10, 7, 2, 8, 3])

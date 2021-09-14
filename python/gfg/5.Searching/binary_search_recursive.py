@@ -1,5 +1,5 @@
 def binary_search(arr, low, high, x):
-    if high >= low:
+    if low <= high:
         mid = (high + low) // 2
         if arr[mid] == x:
             return mid
@@ -14,4 +14,3 @@ def binary_search(arr, low, high, x):
 x = int(input())
 arr = list(map(int, input().strip().split()))
 print(binary_search(arr, 0, len(arr) - 1, x))
-
