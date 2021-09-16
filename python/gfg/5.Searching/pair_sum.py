@@ -1,16 +1,17 @@
-def Method(arr):
+def PairSum(arr):
     left = 0
     right = len(arr) - 1
     while left <= right:
         if arr[left] + arr[right] == x:
             return (arr[left], arr[right])
         elif arr[left] + arr[right] > x:
-            high = high - 1
+            right = right - 1
         else:
-            low = low + 1
+            left = left + 1
     return -1
 
 
 x = int(input())
 arr = list(map(int, input().strip().split()))
-print(Method(arr))
+arr.sort()
+print(PairSum(arr))

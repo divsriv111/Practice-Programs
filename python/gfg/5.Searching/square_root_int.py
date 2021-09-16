@@ -1,17 +1,19 @@
-def FindSqrt(n):
-    low = 1
-    high = n - 1
-    ans = -1
-    while low <= high:
-        mid = (low + high) // 2
-        mysqrt = mid * mid
-        if mysqrt > n:
-            high = high - 1
-        elif mysqrt < n:
-            low = low + 1
-            ans = mid - 1
-        else:
+def FindSqrt(x):
+    if (x == 0 or x == 1):
+        return x
+
+    start = 1
+    end = x
+    while (start <= end):
+        mid = (start + end) // 2
+
+        if (mid * mid == x):
             return mid
+        if (mid * mid < x):
+            start = mid + 1
+            ans = mid
+        else:
+            end = mid - 1
 
     return ans
 
