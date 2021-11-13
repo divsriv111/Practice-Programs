@@ -1,1 +1,25 @@
-47
+services.AddSingleton<CommodityType>();
+services.AddSingleton<CurrencyEnumType>();
+services.AddSingleton<DistanceUomTypeType>();
+services.AddSingleton<LineHaulRateMethod TypeType>();
+services.AddSingleton<LTLQuickQuote Type>();
+services.AddSingleton<LTLRequirementType>();
+services.AddSingleton<NoteEventType>();
+services.AddSingleton<NoteType>();
+services.AddSingleton<NoteTypeType>();
+services.AddSingleton<OrderChargeType>();
+services.AddSingleton<OrderDistancePreferenceModelType>();
+services.AddSingleton<OrderPrepaymentModelType>();
+services.AddSingleton<OrderStatusTypeType>();
+services.AddSingleton<OrderTripType>();
+services.AddSingleton<OrderType>();
+services.AddSingleton<ProductType>();
+services.AddSingleton<QuoteChargeType>();
+services.AddSingleton<RateBreakdownTypesType>();
+services.AddSingleton<ReferenceNumberType>();
+services.AddSingleton<RequirementType>();
+services.AddSingleton<SalespersonType>();
+services.AddSingleton<SelectedCarrierType>();
+services.AddSingleton<TaxChargeType>();
+services.AddSingleton<TransactionACKCodeType>();
+services.AddSingleton<TripType>();

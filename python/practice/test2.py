@@ -192,21 +192,30 @@ props = ["TransactionACKCode TransactionACK ",
 datatypes = ["int?", "int", "string", "double",
              "double?", "float", "float?", "bool", "bool?", "decimal", "decimal?", "DateTime?", "DateTime"]
 
-leftovers = []
 included = []
 for i in props:
     s = ''
     tmp = i.strip().split(' ')
     if tmp[0] not in datatypes:
-        leftovers.append(i)
-        continue
-    if i.__contains__('string') or i.__contains__('?'):
+        if tmp[0].__contains__("IEnumerable"):
+            tmp2 = tmp[0].split('<')[1].replace('>', '')
+            s = s = f'Field(p => p.{tmp[1]}, false, typeof(ListGraphType<{tmp2}Type>));'
+        else:
+            tmp[1] = tmp[1].replace('>', '')
+            s = s = f'Field(p => p.{tmp[1]}, false, typeof({tmp[1]}Type));'
+    elif i.__contains__('DateTime'):
+        if i.__contains__('?'):
+            s = f'Field<DateTimeGraphType>(p => p.{tmp[1]});'
+        else:
+            s = s = f'Field<NonNullGraphType<DateTimeGraphType>>(p => p.{tmp[1]});'
+    elif i.__contains__('string') or i.__contains__('?'):
         s = f'Field(p => p.{tmp[1]}, true);'
+
     else:
         s = f'Field(p => p.{tmp[1]});'
     included.append(s)
 
 
-# for i in leftovers:
-#     print(i)
-pprint(leftovers)
+for i in included:
+    print(i)
+# pprint(leftovers)
