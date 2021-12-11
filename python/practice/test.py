@@ -1,212 +1,40 @@
-from pprint import pprint
+class Node(object):
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
 
-props = ["TransactionACKCode TransactionACK ",
-         "decimal? BillDistance ",
-         "string BillingMethodTypeCode",
-         "int? BillingMethodTypeId ",
-         "int BusinessUnitId ",
-         "decimal CarrierMaxPay ",
-         "decimal CarrierMaxPayPercent ",
-         "DateTime? CarrierPortalPostingDate ",
-         "string Code ",
-         "IEnumerable<Commodity> Commodities ",
-         "int? CommunicationMethodTypeId ",
-         "string ContactName ",
-         "string ContactPhone ",
-         "decimal Cost ",
-         "decimal CostTransactionAmount ",
-         "string CreatedBy ",
-         "DateTime? CreatedDate ",
-         "string CrossSellOrderNumber ",
-         "CurrencyEnum Currency ",
-         "string CurrencyCode ",
-         "int CurrencyId ",
-         "string CustomerCode ",
-         "int? CustomerId ",
-         "int? CustomerTypeId ",
-         "IEnumerable<Note> CustomerNotes ",
-         "int? CustomerServiceTypeId ",
-         "string CustomsBrokerLocationCode ",
-         "int? CustomsBrokerLocationId ",
-         "int? DestinationStopId ",
-         "decimal? Distance ",
-         "int? DistanceMethodId ",
-         "int? DistanceMethodTypeId ",
-         "string DistanceProvider ",
-         "int DistanceProviderId ",
-         "string DistanceProviderMethod ",
-         "decimal? DistanceProviderVersion ",
-         "UnitOfMeasurementTypes DistanceUomType ",
-         "string DistanceUomTypeCode ",
-         "int DistanceUomTypeId ",
-         "int? DistanceVersionId ",
-         "bool DoNotCall ",
-         "string DraftMode ",
-         "string EdiImportErrors ",
-         "int? EdiOriginalId ",
-         "string EdiPartnerId ",
-         "string EdiVersion ",
-         "string EmergencyContactName ",
-         "string EmergencyContactPhone ",
-         "string EmergencyContactPhoneExtension ",
-         "DateTime? ExchangeDateUtc ",
-         "DateTime? ExportedToPegasusDate ",
-         "int FinancialStatusTypeId ",
-         "DateTime? FirstErpExportDate ",
-         "string GeocodingPreference ",
-         "decimal? GrossWeight ",
-         "string HoldReason ",
-         "bool IsConsolidationCandidate ",
-         "bool IsCpat ",
-         "bool IsCsa ",
-         "bool? IsCustomerCarrierThreshold ",
-         "bool IsCustomerRevenueLow ",
-         "bool IsCustomsBroker ",
-         "bool IsDropAndHook ",
-         "bool? IsExportedToPegasus ",
-         "bool IsExternalOrder ",
-         "bool IsFast ",
-         "bool IsHazmat ",
-         "bool IsHighValue ",
-         "bool IsMaxPayOverridden ",
-         "bool IsOnHold ",
-         "bool IsPercentageOfRevenue ",
-         "bool IsPip ",
-         "bool IsSmartway ",
-         "bool IsTonu ",
-         "bool IsTsa ",
-         "bool IsTurnedBack ",
-         "bool IsTwiccard ",
-         "bool IsUiiacard ",
-         "bool IsUncommitted ",
-         "decimal? LineHaulRate ",
-         "CurrencyEnum LineHaulRateCurrency ",
-         "DateTime? LineHaulRateExchangeDate ",
-         "decimal? LineHaulRateExchangeRate ",
-         "RateMethodTypes LineHaulRateMethodType ",
-         "string LineHaulRateMethodTypeCode ",
-         "int LineHaulRateMethodTypeId ",
-         "decimal? LineHaulRateTransactionAmount ",
-         "decimal LineHaulUnits ",
-         "int? LineHaulJustificationTypeId ",
-         "string LineHaulJustificationComment ",
-         "LTLQuickQuote LTLQuickQuote ",
-         "int? LTLQuickQuoteId ",
-         "DateTime? MarkedAsDeliveredDate ",
-         "string MaterialCodeId ",
-         "int? NetworkStatusId ",
-         "IEnumerable<Note> Notes ",
-         "string OfficeLocationCode ",
-         "int? OfficeLocationId ",
-         "IEnumerable<OrderCharge> OrderCharges ",
-         "decimal OrderCharge ",
-         "int OrderChargesCurrencyId ",
-         "DateTime OrderChargesExchangeDate ",
-         "decimal OrderChargesExchangeRate ",
-         "decimal OrderChargesTransactionAmount ",
-         "OrderDistancePreferenceModel OrderDistancePreference ",
-         "Guid? OrderDraftId ",
-         "int OrderId ",
-         "IEnumerable<Requirement> OrderRequirements ",
-         "OrderStatusType OrderStatusType ",
-         "int OrderStatusTypeId ",
-         "int? OriginStopId ",
-         "bool? OverrideNotifications ",
-         "string PlanningComment ",
-         "string PoNumber ",
-         "bool PostToCarrierPortal ",
-         "OrderPrepaymentModel PrepaymentDetails ",
-         "decimal Price ",
-         "int PriceCurrencyId ",
-         "DateTime PriceExchangeDate ",
-         "decimal PriceExchangeRate ",
-         "decimal PriceTransactionAmount ",
-         "decimal PriceWithTaxes ",
-         "decimal PriceWithTaxesTransactionAmount ",
-         "RateBreakdownTypes RateBreakdownType ",
-         "int? RateMethodTypeId ",
-         "string RateUnitDescription ",
-         "decimal? RateUnits ",
-         "bool ReadyToBill ",
-         "DateTime? ReadyToBillDate ",
-         "int? RecommendedNonReeferEquipmentTypeId ",
-         "int? RecommendedReeferEquipmentTypeId ",
-         "IEnumerable<ReferenceNumber> ReferenceNumbers ",
-         "string ReportingCode ",
-         "int? ReportingCodeId ",
-         "int? RequestedTractorEquipmentTypeId ",
-         "int? RequestedTrailerEquipmentCategoryId ",
-         "string RequestedTrailerEquipmentTypeCode ",
-         "int? RequestedTrailerEquipmentTypeId ",
-         "bool RestrictLoadPosting ",
-         "string RTBOnHoldReasonCode ",
-         "decimal? RuleChargesTotal ",
-         "CurrencyEnum? RuleChargesTotalCurrency ",
-         "DateTime? RuleChargesTotalExchangeDate ",
-         "decimal? RuleChargesTotalExchangeRate ",
-         "decimal? RuleChargesTotalTransactionAmount ",
-         "IEnumerable<Salesperson> Salespersons ",
-         "string ServiceTypeCode ",
-         "int? ServiceTypeId ",
-         "string ShipmentId ",
-         "string SourceTypeCode ",
-         "int? SourceTypeId ",
-         "int? TaxableUnitId ",
-         "decimal? TaxableUnitQty ",
-         "IEnumerable<TaxCharge> TaxCharges ",
-         "decimal Taxes ",
-         "decimal TaxesTransactionAmount ",
-         "string TemperatureHigh ",
-         "string TemperatureLow ",
-         "int? TransportClassId ",
-         "int? TripCount ",
-         "decimal? TripDistance ",
-         "IEnumerable<Trip> Trips ",
-         "string UiCulture ",
-         "string UpdatedBy ",
-         "DateTime? UpdatedDate ",
-         "string UserName ",
-         "int? UserId ",
-         "decimal? ValueOfGoods ",
-         "int? ValueOfGoodsCurrencyId ",
-         "DateTime? ValueOfGoodsExchangeDate ",
-         "decimal? ValueOfGoodsExchangeRate ",
-         "decimal? ValueOfGoodsTransactionAmount ",
-         "decimal? Volume ",
-         "decimal? Weight ",
-         "decimal TotalLineHaulAmount ",
-         "IEnumerable<Stop> Stops ",
-         "IEnumerable<OrderTrip> OrderTrips ",
-         "bool IsBanyanImport ",
-         "string AutoRateType ",
-         "int? CustomerLaneId ",
-         "string ContractNumber ",
-         "string LaneCode ",
-         "string OriginCode ",
-         "string DestinationCode ",
-         "bool IsOrderRequirements2Enabled ",
-         "decimal TotalLineHaul ",
-         "IEnumerable<OrderCharge> Accessorials ",
-         "AmountValueObject ValueOfGoodsAmount "]
-
-datatypes = ["int?", "int", "string", "double",
-             "double?", "float", "float?", "bool", "bool?", "decimal", "decimal?", "DateTime?", "DateTime"]
-
-leftovers = []
-included = []
-for i in props:
-    s = ''
-    tmp = i.strip().split(' ')
-    if tmp[0] not in datatypes:
-        leftovers.append(i)
-        continue
-    if i.__contains__('string') or i.__contains__('?'):
-        s = f'Field(p => p.{tmp[1]}, true);'
-    else:
-        s = f'Field(p => p.{tmp[1]});'
-    included.append(s)
-
-
-# for i in leftovers:
-#     print(i)
-pprint(leftovers)
+def array_to_bst(array_nums):
+    if not array_nums:
+        return None
+    mid_num = len(array_nums)//2
+    node = Node(array_nums[mid_num])
+    node.left = array_to_bst(array_nums[:mid_num])
+    node.right = array_to_bst(array_nums[mid_num+1:])
+    return node
+        
+def insert(node, value):
+    if node == None:
+        return Node(value)
+    if value > node.val:
+        node.right = insert(node.right, value)
+    elif value < node.val:
+        node.left = insert(node.left, value)
+        return node
+  
+def maxDepth(node): 
+    if node is None: 
+        return 0  
+    else : 
+        lDepth = maxDepth(node.left) 
+        rDepth = maxDepth(node.right) 
+        if (lDepth > rDepth): 
+            return lDepth + 1
+        else: 
+            return rDepth + 1
+  
+  
+# 
+arr = [5,4,6,2,3,4]
+root = array_to_bst(arr) 
+print(maxDepth(root) - 1)
