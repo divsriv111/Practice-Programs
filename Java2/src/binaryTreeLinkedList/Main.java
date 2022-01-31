@@ -3,6 +3,7 @@ package binaryTreeLinkedList;
 public class Main {
     public static void main(String[] args) {
         var binaryTree = new BinaryTreeLL();
+        /*
         var N1 = new BinaryNode("N1");
         var N2 = new BinaryNode("N2");
         var N3 = new BinaryNode("N3");
@@ -38,6 +39,13 @@ public class Main {
 
         binaryTree.search("N5");
         binaryTree.search("N99");
-
+        */
+        binaryTree.insert("N1");
+        binaryTree.insert("N2");
+        binaryTree.insert("N3");
+        binaryTree.insert("N4");
+        binaryTree.insert("N5");
+        binaryTree.insert("N6");
+        binaryTree.levelOrder();
     }
 }
