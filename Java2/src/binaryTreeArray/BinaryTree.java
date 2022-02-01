@@ -33,4 +33,39 @@ public class BinaryTree {
         preOrder(index * 2);    //left child
        preOrder(index * 2 + 1); //right child
     }
+
+    public void inOrder(int index){
+        if (index > lastUsedIndex){
+            return;
+        }
+        inOrder(index * 2);    //left child
+        System.out.print(arr[index] + " ");
+        inOrder(index * 2 + 1); //right child
+    }
+
+    public void postOrder(int index){
+        if (index > lastUsedIndex){
+            return;
+        }
+        postOrder(index * 2);    //left child
+        postOrder(index * 2 + 1); //right child
+        System.out.print(arr[index] + " ");
+    }
+
+    public void levelOrder(){
+        for(var i = 1; i <= lastUsedIndex; i++){
+            System.out.print(arr[i] + " ");
+        }
+    }
+
+    public int search(String key){
+        for(var i = 1; i <= lastUsedIndex; i++){
+            if (arr[i] == key){
+                System.out.print("Value exist in tree at location " + i);
+                return i;
+            }
+        }
+        System.out.print("Value do not found");
+        return -1;
+    }
 }

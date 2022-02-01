@@ -13,6 +13,10 @@ public class Main {
         binaryTree.insert("N8");
         binaryTree.insert("N9");
         System.out.println();
-        binaryTree.preOrder(1);
+        binaryTree.inOrder(1);
+        System.out.println();
+        binaryTree.postOrder(1);
+        System.out.println();
+        binaryTree.levelOrder();
     }
 }
